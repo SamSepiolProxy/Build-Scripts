@@ -5,6 +5,7 @@
 Run the following as admin with powershell.
 ### 1. Install Boxstarter
 ```
+Set-ExecutionPolicy Unrestricted
 . { Invoke-WebRequest -useb https://boxstarter.org/bootstrapper.ps1 } | iex; Get-Boxstarter -Force
 ```
 Download the redwin_deploy.choco script using the boxstarter cmd prompt and run it as admin on the windows system using the prompted for credentials.
