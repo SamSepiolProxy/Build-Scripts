@@ -1,0 +1,10 @@
+vim /etc/network/interfaces
+auto eth0
+iface eth0 inet static
+address {ip_Address}
+netmask {netmask}
+gateway {Default_gateway_IP_Address}
+
+vim /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 8.8.4.4
