@@ -121,4 +121,3 @@ msfdb init
 systemctl enable postgresql
 
 echo "Done"
-echo "Get Nessus, Nessus Exporter, sis-collection"
