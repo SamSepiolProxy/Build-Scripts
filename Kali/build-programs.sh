@@ -20,7 +20,7 @@ apt-get update && apt-get upgrade -y
 apt-get dist-upgrade -y
 
 #basic toolset
-apt-get install powershell sipcalc rstat-client cifs-utils oscanner rusers filezilla ipmitool freeipmi htop iftop wondershaper libssl-dev libffi-dev python-dev build-essential nfs-common rsh-client python3-pip python2 seclists tmux -y
+apt-get install powershell sipcalc rstat-client cifs-utils oscanner rusers filezilla ipmitool freeipmi htop iftop wondershaper libssl-dev libffi-dev python3-dev build-essential nfs-common rsh-client python3-pip python2 seclists tmux -y
 
 #pip2 install
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
@@ -44,7 +44,7 @@ git clone https://github.com/PowerShellMafia/PowerSploit.git
  
 #Impacket
 git clone https://github.com/CoreSecurity/impacket.git
-python "$toolsdir/tools/impacket/setup.py" install
+python3 "$toolsdir/tools/impacket/setup.py" install
  
 #Winpeas and Linpeas
 git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git
