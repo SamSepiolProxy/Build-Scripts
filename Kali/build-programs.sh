@@ -71,6 +71,7 @@ git clone https://github.com/samratashok/ADModule.git
 #Covenant
 apt-get install -y dotnet-sdk-3.1 -y
 git clone --recurse-submodules https://github.com/cobbr/Covenant
+dotnet build "$toolsdir/tools/Covenant/Covenant"
 
 #winrm
 gem install evil-winrm
