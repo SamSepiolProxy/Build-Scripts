@@ -20,7 +20,7 @@ apt-get update && apt-get upgrade -y
 apt-get dist-upgrade -y
 
 #basic toolset
-apt-get install powershell libxml2-dev libxslt1-dev sipcalc rstat-client cifs-utils oscanner rusers filezilla ipmitool freeipmi htop iftop wondershaper libssl-dev libffi-dev python3-dev build-essential nfs-common rsh-client python3-pip python2 seclists tmux -y
+apt-get install powershell libxml2-dev libxslt1-dev sipcalc rstat-client cifs-utils oscanner rusers filezilla ipmitool freeipmi htop iftop wondershaper libssl-dev libffi-dev build-essential nfs-common rsh-client python3-pip python2 seclists tmux -y
 
 #pip2 install
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
