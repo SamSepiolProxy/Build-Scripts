@@ -82,9 +82,9 @@ wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_
 #sharphound3
 mkdir sharphound3
 cd sharphound3
-wget https://raw.githubusercontent.com/BloodHoundAD/BloodHound/master/Collectors/AzureHound.ps1
+wget https://github.com/BloodHoundAD/AzureHound/releases/download/v1.1.3/azurehound-windows-amd64.zip
 wget https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe
-wget https://raw.githubusercontent.com/BloodHoundAD/BloodHound/master/Collectors/SharpHound.ps1
+wget https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.ps1
 
 #enable xrdp
 #apt install xrdp -y
