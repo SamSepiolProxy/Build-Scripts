@@ -1,0 +1,107 @@
+New-Item -Path C:\ -Name Temp -ItemType Directory -ErrorAction SilentlyContinue
+$env:TEMP = "C:\Temp"
+$env:TMP = "C:\Temp"
+
+New-Item -Path C:\ -Name payloads -ItemType Directory -ErrorAction SilentlyContinue
+
+# Defender
+Add-MpPreference -ExclusionPath "C:\tools\"
+Add-MpPreference -ExclusionPath "C:\payloads\"
+$Downloads = Get-ItemPropertyValue 'HKCU:\software\microsoft\windows\currentversion\explorer\shell folders\' -Name '{374DE290-123F-4565-9164-39C4925E467B}'
+Add-MpPreference -ExclusionPath $Downloads
+Set-MpPreference -MAPSReporting Disabled
+Set-MpPreference -SubmitSamplesConsent NeverSend
+
+# Packages
+choco feature enable -n allowGlobalConfirmation
+choco install git
+choco install vscode
+choco install openjdk11
+choco install sysinternals --params "/InstallDir:C:\tools\sysinternals"
+choco install googlechrome --ignore-checksums
+choco install 7zip
+choco install heidisql --version=10.2.0.559900
+choco install putty
+choco install OpenVPN
+choco install python3
+choco install nmap
+choco install az.powershell
+
+choco install greenshot
+choco install microsoft-windows-terminal
+
+# GitHub
+
+git clone --branch dev https://github.com/PowerShellMafia/PowerSploit.git C:\tools\PowerSploit
+git clone --recurse-submodules https://github.com/cobbr/Covenant C:\tools\Covenant
+git clone https://github.com/r3motecontrol/Ghostpack-CompiledBinaries.git C:\tools\Ghostpack
+New-Item -Path C:\tools -Name ldapnomnom -ItemType Directory -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri https://github.com/lkarlslund/ldapnomnom/releases/download/v1.0.6/ldapnomnom-windows-amd64.exe -OutFile "C:\tools\ldapnomnom\ldapnomnom-windows-amd64.exe"
+New-Item -Path C:\tools -Name dnSpy -ItemType Directory -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri https://github.com/dnSpyEx/dnSpy/releases/download/v6.2.0/dnSpy-net-win64.zip -OutFile "C:\tools\dnSpy\dnSpy-net-win64.zip"
+git clone https://github.com/p0dalirius/Coercer.git C:\tools\Coercer
+git clone https://github.com/cube0x0/LdapSignCheck.git C:\LdapSignCheck
+New-Item -Path C:\tools -Name smbeagle -ItemType Directory -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri https://github.com/punk-security/smbeagle/releases/download/2.4.0/smbeagle_2.4.0_win_x64.zip -OutFile "C:\tools\smbeagle\smbeagle_2.4.0_win_x64.zip"
+git clone https://github.com/dievus/Oh365UserFinder.git C:\tools\Oh365UserFinder
+git clone https://github.com/ly4k/Certipy.git C:\tools\Certipy
+git clone https://github.com/ZephrFish/Bloodhound-CustomQueries.git C:\tools\BloodHound-CustomQueries
+git clone https://github.com/dafthack/MFASweep.git c:\tools\MFASweep
+git clone https://github.com/insidetrust/statistically-likely-usernames.git C:\tools\statistically-likely-usernames
+New-Item -Path C:\tools -Name Snaffler -ItemType Directory -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri https://github.com/SnaffCon/Snaffler/releases/download/1.0.44/Snaffler.exe -OutFile "C:\tools\Snaffler\Snaffler.exe"
+git clone https://github.com/initstring/linkedin2username.git C:\tools\linkedin2username
+git clone https://github.com/Kevin-Robertson/Inveigh.git
+New-Item -Path C:\tools -Name lazagne -ItemType Directory -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri https://github.com/AlessandroZ/LaZagne/releases/download/2.4.3/lazagne.exe -OutFile "C:\tools\lazagne\lazagne.exe"
+New-Item -Path C:\tools -Name mimikatz -ItemType Directory -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20220919/mimikatz_trunk.zip -OutFile "C:\tools\mimikatz\mimikatz.zip"
+New-Item -Path C:\tools -Name WDAC -ItemType Directory -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri https://gist.githubusercontent.com/SamSepiolProxy/762c34d13622d0999c693f36bfbe4cc4/raw/a9b55d31075f91b467a8a37b9d8b2d84a0aa856b/CIPolicyParser.ps1 -OutFile "C:\tools\WDAC\CIPolicyParser.ps1"
+git clone https://github.com/sc0tfree/updog.git C:\tools\updog
+git clone https://github.com/Kevin-Robertson/Powermad.git C:\tools\Powermad
+git clone https://github.com/hausec/PowerZure.git C:\tools\PowerZure
+git clone https://github.com/Gerenios/AADInternals.git C:\tools\AADInternals
+
+# IE first run
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer"
+New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Main"
+New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer\Main" -Name DisableFirstRunCustomize -Value 1
+
+# BloodHound
+Invoke-WebRequest -Uri 'https://github.com/BloodHoundAD/BloodHound/releases/download/4.2.0/BloodHound-win32-x64.zip' -OutFile "$env:TEMP\BloodHound.zip"
+Expand-Archive -Path "$env:TEMP\BloodHound.zip" -DestinationPath C:\tools\
+Rename-Item -Path C:\tools\BloodHound-win32-x64\ -NewName BloodHound
+Invoke-WebRequest -Uri 'https://neo4j.com/artifact.php?name=neo4j-community-4.4.9-windows.zip' -OutFile "$env:TEMP\neo4j.zip"
+Expand-Archive -Path "$env:TEMP\neo4j.zip" -DestinationPath C:\tools\
+Rename-Item -Path C:\tools\neo4j-community-4.0.0\ -NewName Neo4j
+
+## NET Framework
+Enable-WindowsOptionalFeature -FeatureName NetFx3 -Online
+
+# GPRegistryPolicy
+Install-Module GPRegistryPolicy -Force
+
+# Enable PSRemoting
+# Enable-PSRemoting -Force
+# The below does enable all hosts as trusted not for production use
+Set-Item WSMan:\localhost\Client\TrustedHosts -Value "*" -Force
+
+# UI
+Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1" -Force
+Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar -EnableExpandToOpenFolder -EnableShowRibbon
+Install-ChocolateyShortcut -shortcutFilePath "C:\Users\Public\Desktop\tools.lnk" -targetPath C:\tools\
+Install-ChocolateyShortcut -shortcutFilePath "C:\Users\Public\Desktop\Neo4j.lnk" -targetPath "C:\tools\Neo4j\bin\neo4j.bat" -arguments "console" -runAsAdmin
+
+# Wallpaper
+New-Item -Path C:\ -Name DTop -ItemType Directory -ErrorAction SilentlyContinue
+Invoke-WebRequest -Uri 'https://github.com/SamSepiolProxy/Build-Scripts/raw/main/Windows/rt_wallpaper.jpg' -OutFile "C:\DTop\wallpaper.jpg"
+set-itemproperty -path "HKCU:Control Panel\Desktop" -name WallPaper -value C:\DTop\wallpaper.jpg
+
+# Misc
+$DesktopPath = [Environment]::GetFolderPath("Desktop")
+Remove-Item -Path "C:\Users\Public\Desktop\Boxstarter Shell.lnk"
+Remove-Item -Path "$DesktopPath\eula.lnk"
+Remove-Item -Path "C:\Users\Public\Desktop\Visual Studio Code.lnk"
+Remove-Item -Path "$DesktopPath\HeidiSQL.lnk"
+Remove-Item -Path C:\Temp\ -Recurse -Force
