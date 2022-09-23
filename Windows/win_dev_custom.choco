@@ -62,6 +62,8 @@ git clone https://github.com/sc0tfree/updog.git C:\tools\updog
 git clone https://github.com/Kevin-Robertson/Powermad.git C:\tools\Powermad
 git clone https://github.com/hausec/PowerZure.git C:\tools\PowerZure
 git clone https://github.com/Gerenios/AADInternals.git C:\tools\AADInternals
+git clone https://github.com/SamSepiolProxy/SharpServiceAbuse.git C:\tools\SharpServiceAbuse
+git clone https://github.com/rbsec/dnscan.git C:\tools\dnscan
 
 # IE first run
 New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Internet Explorer"
