@@ -86,6 +86,7 @@ Install-Module GPRegistryPolicy -Force
 
 # Enable PSRemoting
 # Enable-PSRemoting -Force
+winrm quickconfig -quiet
 # The below does enable all hosts as trusted not for production use
 Set-Item WSMan:\localhost\Client\TrustedHosts -Value "*" -Force
 
