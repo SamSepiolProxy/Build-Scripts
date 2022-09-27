@@ -40,7 +40,7 @@ Invoke-WebRequest -Uri https://github.com/lkarlslund/ldapnomnom/releases/downloa
 New-Item -Path C:\tools -Name dnSpy -ItemType Directory -ErrorAction SilentlyContinue
 Invoke-WebRequest -Uri https://github.com/dnSpyEx/dnSpy/releases/download/v6.2.0/dnSpy-net-win64.zip -OutFile "C:\tools\dnSpy\dnSpy-net-win64.zip"
 git clone https://github.com/p0dalirius/Coercer.git C:\tools\Coercer
-git clone https://github.com/cube0x0/LdapSignCheck.git C:\LdapSignCheck
+git clone https://github.com/cube0x0/LdapSignCheck.git C:\tools\LdapSignCheck
 New-Item -Path C:\tools -Name smbeagle -ItemType Directory -ErrorAction SilentlyContinue
 Invoke-WebRequest -Uri https://github.com/punk-security/smbeagle/releases/download/2.4.0/smbeagle_2.4.0_win_x64.zip -OutFile "C:\tools\smbeagle\smbeagle_2.4.0_win_x64.zip"
 git clone https://github.com/dievus/Oh365UserFinder.git C:\tools\Oh365UserFinder
