@@ -83,6 +83,7 @@ ufw allow ssh
 #ufw allow in 8834
 ufw logging on
 ufw enable
+systemctl enable ufw
 
 #enable unattended updates
 apt install unattended-upgrades -y
