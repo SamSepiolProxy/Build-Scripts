@@ -40,7 +40,7 @@ git clone https://github.com/cddmp/enum4linux-ng.git
 git clone --depth 1 https://github.com/drwetter/testssl.sh.git
 
 #Powersploit 
-git clone https://github.com/PowerShellMafia/PowerSploit.git
+git clone https://github.com/SamSepiolProxy/PowerSploit.git
  
 #Impacket
 git clone https://github.com/CoreSecurity/impacket.git
@@ -85,6 +85,15 @@ cd sharphound3
 wget https://github.com/BloodHoundAD/AzureHound/releases/download/v1.1.3/azurehound-windows-amd64.zip
 wget https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe
 wget https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.ps1
+
+#Bloodhound
+pip3 install bloodhound
+
+#statistically-likely-usernames
+git clone https://github.com/insidetrust/statistically-likely-usernames.git
+
+#pywerview
+pip install pywerview
 
 #enable xrdp
 #apt install xrdp -y
