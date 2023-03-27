@@ -93,10 +93,13 @@ pip3 install bloodhound
 git clone https://github.com/insidetrust/statistically-likely-usernames.git
 
 #pywerview
-pip install pywerview
+pip3 install pywerview
 
 #Custom Scripts
 git clone https://github.com/SamSepiolProxy/Scripts.git
+
+#updog
+pip3 install updog
 
 #enable xrdp
 #apt install xrdp -y
