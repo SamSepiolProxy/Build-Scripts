@@ -65,6 +65,7 @@ git clone https://github.com/Gerenios/AADInternals.git C:\tools\AADInternals
 git clone https://github.com/SamSepiolProxy/SharpServiceAbuse.git C:\tools\SharpServiceAbuse
 git clone https://github.com/rbsec/dnscan.git C:\tools\dnscan
 git clone https://github.com/danielbohannon/Invoke-Obfuscation.git C:\tools\InvokeObfuscation
+git clone https://github.com/CompassSecurity/BloodHoundQueries.git
 New-Item -Path C:\tools -Name Azurehound -ItemType Directory -ErrorAction SilentlyContinue
 Invoke-WebRequest -Uri https://github.com/BloodHoundAD/AzureHound/releases/download/v2.0.3/azurehound-windows-amd64.zip  -OutFile "C:\tools\Azurehound\azurehound-windows-amd64.zip"
 
