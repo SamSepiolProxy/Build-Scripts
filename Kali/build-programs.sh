@@ -16,11 +16,13 @@ mkdir "$toolsdir/tools"
 timedatectl set-timezone Europe/London
 
 #updates and upgrades
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/docker-archive-keyring.gpg
+echo "deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable" | sudo tee  /etc/apt/sources.list.d/docker.list
 apt-get update && apt-get upgrade -y
 apt-get dist-upgrade -y
 
 #basic toolset
-apt-get install powershell libxml2-dev libxslt1-dev sipcalc rstat-client cifs-utils oscanner rusers filezilla ipmitool freeipmi htop iftop wondershaper libssl-dev libffi-dev build-essential nfs-common rsh-client python3-pip python2 seclists tmux -y
+apt-get install powershell libxml2-dev libxslt1-dev sipcalc rstat-client cifs-utils oscanner rusers filezilla ipmitool freeipmi htop iftop wondershaper libssl-dev libffi-dev build-essential nfs-common rsh-client python3-pip python2 seclists tmux gobuster docker-ce docker-ce-cli containerd.io -y
 
 #pip2 install
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
@@ -82,13 +84,17 @@ wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_
 #sharphound3
 mkdir sharphound3
 cd sharphound3
-wget https://github.com/BloodHoundAD/AzureHound/releases/download/v2.0.4/azurehound-darwin-amd64.zip
-wget https://github.com/BloodHoundAD/AzureHound/releases/download/v2.0.4/azurehound-linux-amd64.zip
-wget https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.exe
+wget https://github.com/BloodHoundAD/AzureHound/releases/download/v2.0.5/azurehound-darwin-amd64.zip
+wget https://github.com/BloodHoundAD/SharpHound/releases/download/v2.0.0/SharpHound-v2.0.0.zip
 wget https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.ps1
+cd "$toolsdir/tools"
 
 #Bloodhound
 pip3 install bloodhound
+mkdir bloodhounddocker
+cd bloodhounddocker
+https://raw.githubusercontent.com/SpecterOps/BloodHound/main/examples/docker-compose/docker-compose.yml
+cd "$toolsdir/tools"
 
 #statistically-likely-usernames
 git clone https://github.com/insidetrust/statistically-likely-usernames.git
