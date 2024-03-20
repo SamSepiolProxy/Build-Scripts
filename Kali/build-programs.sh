@@ -87,7 +87,7 @@ cd "$toolsdir/tools"
 #ldapnomnom
 mkdir ldapnomnom
 cd ldapnomnom
-https://github.com/lkarlslund/ldapnomnom/releases/download/v1.3.0/ldapnomnom-linux-x64
+wget https://github.com/lkarlslund/ldapnomnom/releases/download/v1.3.0/ldapnomnom-linux-x64
 cd "$toolsdir/tools"
 
 #sharphound3
