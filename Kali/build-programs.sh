@@ -30,9 +30,8 @@ python2 /tmp/get-pip.py
 
 cd "$toolsdir/tools"
 
-#spraying toolkit
-git clone https://github.com/byt3bl33d3r/SprayingToolkit.git 
-pip3 install -r "$toolsdir/tools/SprayingToolkit/requirements.txt"
+#mspsray
+git clone https://github.com/SecurityRiskAdvisors/msspray.git
 
 #Impacket
 python3 -m pipx install impacket
