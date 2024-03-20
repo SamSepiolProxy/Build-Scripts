@@ -79,7 +79,16 @@ dotnet build "$toolsdir/tools/Covenant/Covenant"
 gem install evil-winrm
 
 #kerbrute
+mkdir kerberute
+cd kerberute
 wget https://github.com/ropnop/kerbrute/releases/download/v1.0.3/kerbrute_linux_amd64
+cd "$toolsdir/tools"
+
+#ldapnomnom
+mkdir ldapnomnom
+cd ldapnomnom
+https://github.com/lkarlslund/ldapnomnom/releases/download/v1.3.0/ldapnomnom-linux-x64
+cd "$toolsdir/tools"
 
 #sharphound3
 mkdir sharphound3
@@ -93,7 +102,7 @@ cd "$toolsdir/tools"
 pip3 install bloodhound
 mkdir bloodhounddocker
 cd bloodhounddocker
-https://raw.githubusercontent.com/SpecterOps/BloodHound/main/examples/docker-compose/docker-compose.yml
+wget https://raw.githubusercontent.com/SpecterOps/BloodHound/main/examples/docker-compose/docker-compose.yml
 cd "$toolsdir/tools"
 
 #statistically-likely-usernames
