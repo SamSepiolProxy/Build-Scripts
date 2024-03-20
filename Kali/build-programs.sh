@@ -22,7 +22,7 @@ apt-get update && apt-get upgrade -y
 apt-get dist-upgrade -y
 
 #basic toolset
-apt-get install powershell libxml2-dev libxslt1-dev sipcalc rstat-client cifs-utils oscanner rusers filezilla ipmitool freeipmi htop iftop wondershaper libssl-dev libffi-dev build-essential nfs-common rsh-client python3-pip python2 seclists tmux gobuster docker-ce docker-ce-cli containerd.io -y
+apt-get install powershell libxml2-dev libxslt1-dev sipcalc rstat-client cifs-utils oscanner rusers filezilla ipmitool freeipmi htop iftop wondershaper libssl-dev libffi-dev build-essential nfs-common rsh-client python3-pip python2 seclists tmux gobuster docker-ce docker-ce-cli containerd.io pipx -y
 
 #pip2 install
 curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
@@ -34,6 +34,9 @@ cd "$toolsdir/tools"
 git clone https://github.com/byt3bl33d3r/SprayingToolkit.git 
 pip3 install -r "$toolsdir/tools/SprayingToolkit/requirements.txt"
 
+#Impacket
+python3 -m pipx install impacket
+
 #Enum4linux-ng
 apt-get install smbclient python3-ldap3 python3-yaml python3-impacket -y
 git clone https://github.com/cddmp/enum4linux-ng.git
@@ -43,10 +46,6 @@ git clone --depth 1 https://github.com/drwetter/testssl.sh.git
 
 #Powersploit 
 git clone https://github.com/SamSepiolProxy/PowerSploit.git
- 
-#Impacket
-git clone https://github.com/CoreSecurity/impacket.git
-python3 "$toolsdir/tools/impacket/setup.py" install
  
 #Winpeas and Linpeas
 git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git
@@ -70,11 +69,6 @@ git clone https://github.com/lgandx/PCredz.git
 #ADModule
 git clone https://github.com/samratashok/ADModule.git
 
-#Covenant
-apt-get install -y dotnet-sdk-3.1 -y
-git clone --recurse-submodules https://github.com/cobbr/Covenant
-dotnet build "$toolsdir/tools/Covenant/Covenant"
-
 #winrm
 gem install evil-winrm
 
@@ -91,11 +85,11 @@ wget https://github.com/lkarlslund/ldapnomnom/releases/download/v1.3.0/ldapnomno
 cd "$toolsdir/tools"
 
 #sharphound3
-mkdir sharphound3
-cd sharphound3
-wget https://github.com/BloodHoundAD/AzureHound/releases/download/v2.0.5/azurehound-darwin-amd64.zip
-wget https://github.com/BloodHoundAD/SharpHound/releases/download/v2.0.0/SharpHound-v2.0.0.zip
-wget https://github.com/BloodHoundAD/BloodHound/raw/master/Collectors/SharpHound.ps1
+mkdir sharphound
+cd sharphound
+wget https://github.com/BloodHoundAD/SharpHound/releases/download/v2.3.3/SharpHound-v2.3.3.zip
+wget https://github.com/BloodHoundAD/AzureHound/releases/download/v2.1.7/azurehound-windows-amd64.zip
+wget https://github.com/BloodHoundAD/AzureHound/releases/download/v2.1.7/azurehound-linux-amd64.zip
 cd "$toolsdir/tools"
 
 #Bloodhound
