@@ -113,6 +113,9 @@ pip3 install updog
 #usernames list
 git clone https://github.com/insidetrust/statistically-likely-usernames.git
 
+#coercer
+python3 -m pip install coercer
+
 #enable xrdp
 #apt install xrdp -y
 #sed -i 's/3389/3390/g' /etc/xrdp/xrdp.ini
