@@ -12,5 +12,5 @@ Download the redwin_deploy.choco script using the boxstarter cmd prompt and run 
 ### 2. Install Boxstarter Package
 ```
 $Cred = Get-Credential $env:USERNAME
-Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/SamSepiolProxy/Build-Scripts/main/Windows/win_dev_custom.choco -Credential $Cred 
+Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/SamSepiolProxy/Build-Scripts/main/Windows/win_custom.choco -Credential $Cred 
 ```
