@@ -22,19 +22,12 @@ apt-get update && apt-get upgrade -y
 apt-get dist-upgrade -y
 
 #basic toolset
-apt-get install powershell libxml2-dev libxslt1-dev sipcalc rstat-client cifs-utils oscanner rusers filezilla ipmitool freeipmi htop iftop wondershaper libssl-dev libffi-dev build-essential nfs-common rsh-client python3-pip python2 seclists tmux gobuster docker-ce docker-ce-cli containerd.io pipx -y
-
-#pip2 install
-curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
-python2 /tmp/get-pip.py
+apt-get install powershell build-essential nfs-common python3-pip seclists tmux gobuster docker-ce docker-ce-cli containerd.io pipx -y
 
 cd "$toolsdir/tools"
 
 #mspsray
 git clone https://github.com/SecurityRiskAdvisors/msspray.git
-
-#Impacket
-python3 -m pipx install impacket
 
 #Enum4linux-ng
 apt-get install smbclient python3-ldap3 python3-yaml python3-impacket -y
@@ -47,26 +40,19 @@ git clone --depth 1 https://github.com/drwetter/testssl.sh.git
 git clone https://github.com/SamSepiolProxy/PowerSploit.git
  
 #Winpeas and Linpeas
-git clone https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite.git
+mkdir peas
+cd peas
+wget https://github.com/peass-ng/PEASS-ng/releases/download/20250202-a3a1123d/linpeas.sh
+wget https://github.com/peass-ng/PEASS-ng/releases/download/20250202-a3a1123d/winPEAS.bat
+wget https://github.com/peass-ng/PEASS-ng/releases/download/20250202-a3a1123d/winPEASx64.exe
+cd "$toolsdir/tools"
 
 #Linenum 
 git clone https://github.com/rebootuser/LinEnum.git
 
-#Responder
-git clone https://github.com/lgandx/Responder.git
-
 #dnscan
 git clone https://github.com/rbsec/dnscan.git
 pip3 install -r "$toolsdir/tools/dnscan/requirements.txt"
-
-#Pcredz
-apt-get install libpcap-dev -y
-pip3 install Cython
-pip3 install python-libpcap
-git clone https://github.com/lgandx/PCredz.git
-
-#ADModule
-git clone https://github.com/samratashok/ADModule.git
 
 #winrm
 gem install evil-winrm
@@ -80,15 +66,15 @@ cd "$toolsdir/tools"
 #ldapnomnom
 mkdir ldapnomnom
 cd ldapnomnom
-wget https://github.com/lkarlslund/ldapnomnom/releases/download/v1.3.0/ldapnomnom-linux-x64
+wget https://github.com/lkarlslund/ldapnomnom/releases/download/v1.5.1/ldapnomnom-linux-x64
 cd "$toolsdir/tools"
 
 #sharphound3
 mkdir sharphound
 cd sharphound
-wget https://github.com/BloodHoundAD/SharpHound/releases/download/v2.3.3/SharpHound-v2.3.3.zip
-wget https://github.com/BloodHoundAD/AzureHound/releases/download/v2.1.7/azurehound-windows-amd64.zip
-wget https://github.com/BloodHoundAD/AzureHound/releases/download/v2.1.7/azurehound-linux-amd64.zip
+wget https://github.com/SpecterOps/SharpHound/releases/download/v2.5.13/SharpHound-v2.5.13.zip
+wget https://github.com/SpecterOps/AzureHound/releases/download/v2.2.1/azurehound-windows-amd64.zip
+wget https://github.com/SpecterOps/AzureHound/releases/download/v2.2.1/azurehound-linux-amd64.zip
 cd "$toolsdir/tools"
 
 #Bloodhound
@@ -114,7 +100,21 @@ pip3 install updog
 git clone https://github.com/insidetrust/statistically-likely-usernames.git
 
 #coercer
-python3 -m pip install coercer
+mkdir coercer
+cd coercer
+virtualenv venv
+source venv/bin/activate
+pip3 install coercer
+deactivate
+cd "$toolsdir/tools"
+
+#certipy-ad
+mkdir certipyad
+cd certipyad
+virtualenv venv
+source venv/bin/activate
+pip3 install certipy-ad
+deactivate
 
 #enable xrdp
 #apt install xrdp -y
