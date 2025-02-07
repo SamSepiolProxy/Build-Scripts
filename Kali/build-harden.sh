@@ -23,14 +23,6 @@ systemctl enable fail2ban
 apt-get install auditd audispd-plugins -y
 service auditd start
 
-apt-get install libpam-cracklib -y
-cat <<EOF > /etc/pam.d/common-password
-password        [success=1 default=ignore]      pam_unix.so obscure yescrypt
-password        requisite                       pam_cracklib.so retry=3 minlen=12 difok=3 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1
-password        required                        pam_permit.so
-password        optional        pam_gnome_keyring.so
-EOF
-
 cat <<EOF > /etc/ssh/sshd_config
 Banner /etc/issue.net
 AllowTcpForwarding yes
