@@ -42,7 +42,6 @@ $env:TMP = "C:\Temp"
 # GitHub
 
 git clone --branch dev https://github.com/PowerShellMafia/PowerSploit.git C:\tools\PowerSploit
-git clone --recurse-submodules https://github.com/cobbr/Covenant C:\tools\Covenant
 git clone https://github.com/r3motecontrol/Ghostpack-CompiledBinaries.git C:\tools\Ghostpack
 New-Item -Path C:\tools -Name ldapnomnom -ItemType Directory -ErrorAction SilentlyContinue
 Invoke-WebRequest -Uri https://github.com/lkarlslund/ldapnomnom/releases/download/v1.5.1/ldapnomnom-windows-x64.exe -OutFile "C:\tools\ldapnomnom\ldapnomnom-windows-amd64.exe"
