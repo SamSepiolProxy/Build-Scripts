@@ -13,13 +13,17 @@ function Disable-Defender {
     Write-Host "Disabling Windows Defender Real-Time Protection..." -ForegroundColor Yellow
     Set-MpPreference -DisableRealtimeMonitoring $true
 
-    # Ensure Registry Path Exists
+    # Ensure Registry Paths Exist
+    if (-not (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender")) {
+        New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Force | Out-Null
+    }
     if (-not (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection")) {
         New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" -Force | Out-Null
     }
 
     # Modify Registry for Persistence
     Write-Host "Modifying registry to prevent Defender from re-enabling..." -ForegroundColor Yellow
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name "DisableAntiSpyware" -Value 1 -Type DWord
     Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" -Name "DisableRealtimeMonitoring" -Value 1 -Type DWord
 
     Write-Host "Windows Defender Real-Time Protection has been disabled!" -ForegroundColor Green
@@ -32,6 +36,7 @@ function Enable-Defender {
 
     # Remove Registry Modifications
     Write-Host "Restoring original registry settings..." -ForegroundColor Yellow
+    Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender" -Name "DisableAntiSpyware" -ErrorAction SilentlyContinue
     Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection" -Name "DisableRealtimeMonitoring" -ErrorAction SilentlyContinue
 
     Write-Host "Windows Defender Real-Time Protection has been enabled!" -ForegroundColor Green
