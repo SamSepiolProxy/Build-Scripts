@@ -10,6 +10,10 @@ Set-ExecutionPolicy Unrestricted
 ```
 Download the redwin_deploy.choco script using the boxstarter cmd prompt and run it as admin on the windows system using the prompted for credentials.
 ### 2. Install Boxstarter Package
+Run the following script first to configure defender:
+```
+https://raw.githubusercontent.com/SamSepiolProxy/Build-Scripts/refs/heads/main/Windows/Defender-Setup.ps1
+```
 ```
 $Cred = Get-Credential $env:USERNAME
 Install-BoxstarterPackage -PackageName https://raw.githubusercontent.com/SamSepiolProxy/Build-Scripts/main/Windows/win_custom.choco -Credential $Cred 
