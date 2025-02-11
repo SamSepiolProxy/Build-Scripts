@@ -52,7 +52,12 @@ git clone https://github.com/rebootuser/LinEnum.git
 
 #dnscan
 git clone https://github.com/rbsec/dnscan.git
+cd dnscan
+virtualenv venv
+source venv/bin/activate
 pip3 install -r "$toolsdir/tools/dnscan/requirements.txt"
+deactivate
+cd "$toolsdir/tools"
 
 #winrm
 gem install evil-winrm
@@ -78,7 +83,15 @@ wget https://github.com/SpecterOps/AzureHound/releases/download/v2.2.1/azurehoun
 cd "$toolsdir/tools"
 
 #Bloodhound
+mkdir bloodhound
+cd bloodhound
+virtualenv venv
+source venv/bin/activate
 pip3 install bloodhound
+deactivate
+cd "$toolsdir/tools"
+
+#BloodhoundCE
 mkdir bloodhounddocker
 cd bloodhounddocker
 wget https://raw.githubusercontent.com/SpecterOps/BloodHound/main/examples/docker-compose/docker-compose.yml
@@ -88,13 +101,25 @@ cd "$toolsdir/tools"
 git clone https://github.com/insidetrust/statistically-likely-usernames.git
 
 #pywerview
+mkdir pywerview
+cd pywerview
+virtualenv venv
+source venv/bin/activate
 pip3 install pywerview
+deactivate
+cd "$toolsdir/tools"
 
 #Custom Scripts
 git clone https://github.com/SamSepiolProxy/Scripts.git
 
 #updog
+mkdir updog
+cd updog
+virtualenv venv
+source venv/bin/activate
 pip3 install updog
+deactivate
+cd "$toolsdir/tools"
 
 #usernames list
 git clone https://github.com/insidetrust/statistically-likely-usernames.git
