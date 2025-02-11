@@ -174,6 +174,6 @@ export PROMPT_COMMAND='RETRN_VAL=$?;logger -p local6.debug "\$(whoami) [\$\$]: \
 EOF
 
 msfdb init
-systemctl enable postgresql
+#systemctl enable postgresql
 
 echo "Done"
