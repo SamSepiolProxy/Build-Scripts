@@ -140,6 +140,7 @@ virtualenv venv
 source venv/bin/activate
 pip3 install certipy-ad
 deactivate
+cd "$toolsdir/tools"
 
 #enable xrdp
 #apt install xrdp -y
