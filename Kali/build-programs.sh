@@ -22,7 +22,7 @@ apt-get update && apt-get upgrade -y
 apt-get dist-upgrade -y
 
 #basic toolset
-apt-get install powershell build-essential nfs-common python3-pip seclists tmux gobuster docker-ce docker-ce-cli containerd.io pipx -y
+apt-get install powershell build-essential nfs-common python3-pip seclists tmux gobuster docker-ce docker-ce-cli containerd.io pipx remmina -y
 
 cd "$toolsdir/tools"
 
