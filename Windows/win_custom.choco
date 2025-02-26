@@ -7,6 +7,12 @@ Remove-Item C:\BGinfo\ -Recurse -Force -ErrorAction SilentlyContinue
 
 New-Item -Path C:\ -Name payloads -ItemType Directory -ErrorAction SilentlyContinue
 
+#Power Settings
+Powercfg /Change monitor-timeout-ac 0
+Powercfg /Change monitor-timeout-dc 0
+Powercfg /Change standby-timeout-ac 0
+Powercfg /Change standby-timeout-dc 0
+
 #~~~~~~ Main Choco packages install ~~~~~
 choco feature enable -n allowGlobalConfirmation
 
