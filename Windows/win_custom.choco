@@ -115,7 +115,18 @@ Rename-Item -Path C:\tools\neo4j-community-4.4.9\ -NewName Neo4j
 Enable-WindowsOptionalFeature -FeatureName NetFx3 -Online
 
 # PowerShell Modules
-Install-Module Microsoft.Graph
+Install-Module Microsoft.Graph -Force -Scope CurrentUser
+Install-Module Az -Force -Scope CurrentUser
+
+#Install Python Tooling
+$pythondirectory = Get-ChildItem -Path C:\ -Filter 'python*' -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Name
+start-process -FilePath "C:\$pythondirectory\python.exe" -ArgumentList "-m pip install requests colorama" -Wait -NoNewWindow
+start-process -FilePath "C:\$pythondirectory\python.exe" -ArgumentList "-m pip install --user pipx" -Wait -NoNewWindow
+start-process -FilePath "C:\$pythondirectory\python.exe" -ArgumentList "-m pipx install git+https://github.com/dirkjanm/ROADtools --include-deps" -Wait -NoNewWindow
+start-process -FilePath "C:\$pythondirectory\python.exe" -ArgumentList "-m pipx install ensurepath --include-deps" -Wait -NoNewWindow
+
+#Path for tooling
+setx Path "$($env:Path);$($env:USERPROFILE)\.local\bin"
 
 # GPRegistryPolicy
 Install-Module GPRegistryPolicy -Force
