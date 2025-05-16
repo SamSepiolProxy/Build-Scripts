@@ -150,6 +150,15 @@ Invoke-WebRequest -Uri 'https://github.com/SamSepiolProxy/Build-Scripts/raw/main
 set-itemproperty -path "HKCU:Control Panel\Desktop" -name WallPaper -value C:\DTop\wallpaper.jpg
 
 # Misc
+# Capture the existing list
+$KeyboardList = Get-WinUserLanguageList
+# Remove the default US keyboard
+$KeyboardList[0].InputMethodTips.Remove('0409:00000409')
+# Add the en-GB keyboard
+$KeyboardList[0].InputMethodTips.Add('0409:00000809')
+# Make it so
+Set-WinUserLanguageList $KeyboardList -Force
+
 $DesktopPath = [Environment]::GetFolderPath("Desktop")
 Remove-Item -Path "C:\Users\Public\Desktop\Boxstarter Shell.lnk"
 Remove-Item -Path "$DesktopPath\eula.lnk"
